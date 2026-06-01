@@ -1,15 +1,321 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* ヘッダー */
+.app-header {
+  background-color: #1a1f2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.header-title {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+}
+
+/* ページ全体の背景 */
+.app-body {
+  background-color: #f4f4f6;
+  min-height: calc(100vh - 47px);
+  padding: 28px 32px;
+}
+
+/* タイトルと新規追加ボタンの行 */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a1f2e;
+  max-width: 520px;
+  line-height: 1;
+}
+
+/* テーブルを囲むカード */
+.table-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+/* テーブル本体 */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 0;
+}
+
+.schedule-table thead tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.schedule-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 13px;
+  color: #6b7280;
+  vertical-align: middle;
+}
+
+.schedule-table td {
+  padding: 13px 16px;
+  color: #1a1f2e;
+  vertical-align: middle;
+}
+
+.schedule-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.schedule-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.schedule-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* 詳細・編集・削除リンク */
+.action-links a {
+  font-size: 13px;
+  text-decoration: none;
+  margin-right: 14px;
+  color: #2563eb;
+}
+
+.action-links a:hover {
+  text-decoration: underline;
+}
+
+.action-links a.delete {
+  color: #e24b4a;
+  margin-right: 0;
+}
+
+.action-links a.delete:hover {
+  color: #a32d2d;
+}
+
+/* フッターカード */
+.footer-card {
+  margin-top: 16px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 40px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-count {
+  font-size: 15px;
+  color: #1a1f2e;
+  margin: 0;
+  line-height: 1;
+}
+
+.footer-count strong {
+  font-weight: 500;
+}
+
+.footer-date {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1;
+}
+
+/*----------create----------*/
+
+/* フォームカード */
+.form-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 32px 40px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* フォームグループ（ラベル＋入力欄） */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+/* 開始日・終了日を横並びにする行 */
+.form-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* ラベル */
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1f2e;
+}
+
+/* 必須マーク */
+.form-label.required::after {
+  content: " *";
+  color: #e24b4a;
+}
+
+/* チェックボックス行 */
+.form-check-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-check-input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.form-check-label {
+  font-size: 14px;
+  color: #1a1f2e;
+  cursor: pointer;
+}
+
+/* テキストエリア */
+.form-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+/* キャンセル・保存ボタン行 */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/*----------read----------*/
+
+/* 一覧に戻るリンク */
+.back-link {
+  display: inline-block;
+  font-size: 14px;
+  color: #2563eb;
+  text-decoration: none;
+  margin-bottom: 16px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* タイトルと編集ボタンの行 */
+.show-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.show-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1a1f2e;
+  margin: 0;
+  line-height: 1;
+}
+
+/* 詳細カード */
+.detail-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 詳細テーブル */
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.detail-table tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-table tr:last-child {
+  border-bottom: none;
+}
+
+.detail-table th {
+  width: 160px;
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 13px;
+  color: #1a1f2e;
+  background-color: #f9fafb;
+  vertical-align: middle;
+  border-right: 1px solid #e5e7eb;
+}
+
+.detail-table td {
+  padding: 16px 20px;
+  color: #1a1f2e;
+  vertical-align: middle;
+}
+
+.edit-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a1f2e;
+  margin: 0 auto 20px;
+  max-width: 520px;
+  line-height: 1;
+}
+
+.new-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a1f2e;
+  margin: 0 auto 20px;
+  max-width: 520px;
+  line-height: 1;
+}
+
+.field-error {
+  color: #e24b4a;
+  font-size: 12px;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
