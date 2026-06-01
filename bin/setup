@@ -2,7 +2,7 @@
 require "fileutils"
 
 APP_ROOT = File.expand_path("..", __dir__)
-APP_NAME = "potepan6-3"
+APP_NAME = "myapp"
 
 def system!(*args)
   system(*args, exception: true)

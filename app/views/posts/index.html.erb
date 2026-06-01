@@ -1,0 +1,50 @@
+<%= render "shared/header" %>
+
+<div class="app-body">
+  <div class="toolbar">
+    <p class="page-title">予定一覧</p>
+    <%= link_to "＋ 新規追加", :new_post, class: "btn btn-primary" %>
+  </div>
+  
+  <% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
+  
+  <div class="table-card">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>タイトル</th>
+          <th>開始日</th>
+          <th>終了日</th>
+          <th>終日</th>
+          <th>更新日時</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.id %></td>
+          <td><%= post.title %></td>
+          <td><%= post.start_date&.strftime("%Y/%m/%d") %></td>
+          <td><%= post.end_date&.strftime("%Y/%m/%d") %></td>
+          <td><%= post.all_day ? "〇" : "" %></td>
+          <td><%= post.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
+          <td class="action-links">
+            <%= link_to "詳細", post %>
+            <%= link_to "編集", [:edit, post] %>
+            <%= link_to "削除", post, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="footer-card">
+    <p class="footer-count">予定合計 <strong><%= @posts.count %></strong> 件</p>
+    <p class="footer-date">本日の日付 <%= Date.today.strftime('%Y/%m/%d') %></p>
+  </div>
+</div>

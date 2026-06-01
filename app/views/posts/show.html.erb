@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+
+<div class="app-body">
+  <%= link_to "← 一覧に戻る", posts_path, class: "back-link" %>
+
+  <div class="show-toolbar">
+    <p class="show-title"><%= @post.title %></p>
+    <%= link_to edit_post_path(@post), class: "btn btn-outline-primary" do %>
+      ✏️ 編集
+    <% end %>
+  </div>
+
+  <div class="detail-card">
+    <table class="detail-table">
+      <tr>
+        <th>開始日</th>
+        <td><%= @post.start_date&.strftime("%Y/%m/%d") %></td>
+      </tr>
+      <tr>
+        <th>終了日</th>
+        <td><%= @post.end_date&.strftime("%Y/%m/%d") %></td>
+      </tr>
+      <tr>
+        <th>終日</th>
+        <td><%= @post.all_day ? "〇" : "" %></td>
+      </tr>
+      <tr>
+        <th>スケジュールメモ</th>
+        <td><%= @post.memo %></td>
+      </tr>
+    </table>
+  </div>
+</div>
